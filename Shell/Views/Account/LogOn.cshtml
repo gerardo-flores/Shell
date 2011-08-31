@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Log On";
+}
+<div class="shellLoginCont">
+    @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+    @using (Html.BeginForm())
+    {
+        <div class="error">
+            @ViewBag.Message
+        </div>
+        <label>
+            Email
+        </label>
+        @Html.TextBox("Email")
+        <br />
+        <label>
+            Password
+        </label>
+        @Html.Password("Password")
+        <div class="shellLoginBtnCont">
+            <input type="submit" value="Login" class="shellBtn" />
+        </div>
+    }
+</div>

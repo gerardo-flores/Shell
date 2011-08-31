@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "User Administration";
+}
+@using (Html.BeginForm("Search", "User"))
+{
+    <div class="shellFloat-rt">
+        @Html.TextBox("Search")
+        <input type="submit" value="Search" class="btn" />
+    </div>
+    <div class="shellClear">
+    </div>
+    <div class="shellTables">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Email Address
+                    </th>
+                    <th>
+                        Last Login
+                    </th>
+                    <th>
+                        Role
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.People)
+                {
+                    <tr>
+                        <td>
+                            @user.Email
+                        </td>
+                        <td>
+                            @user.LastLogin
+                        </td>
+                        <td>
+                            @(user.IsAdmin ? "Admin" : "User")
+                        </td>
+                        <td>
+                            @(user.IsActive ? "Active" : "Suspended")
+                        </td>
+                        <td align="center">
+                            @if (Model.CurrentUser.ID != user.ID)
+                            {
+                                if (user.IsActive)
+                                {
+                                @Html.ActionLink("Suspend", "Suspend", new { id = user.ID })           
+                                }
+                                if (!user.IsActive)
+                                {
+                                @Html.ActionLink("Activate", "Activate", new { id = user.ID })
+                                }
+                                <span>|</span>                    
+                                @Html.ActionLink("Delete", "Delete", new { id = user.ID }, new { @class = "delete" })
+                                if (!user.IsAdmin)
+                                {
+                                <span>|</span>
+                                @Html.ActionLink("Make Admin", "MakeAdmin", new { id = user.ID, status = true })
+                                }
+                                else if (user.IsAdmin)
+                                {
+                                <span>|</span>
+                                @Html.ActionLink("Remove Admin", "MakeAdmin", new { id = user.ID, status = false })
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @Html.Partial("_modelPagination")
+    @Html.ActionLink("Create New User", "Create", null, new { @class = "btn shellFloat-rt" })
+    <div class="shellClear">
+    </div>
+}
+<form method="post" id="deleteForm" action="">
+</form>

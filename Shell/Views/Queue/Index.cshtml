@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Queue Management";
+    Response.AppendHeader("Refresh", "5");
+}
+<div class="shellTables">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Created
+                </th>
+                <th>
+                    User
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Run Time (Minutes)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var job in Model.Jobs)
+            {
+                <tr>
+                    <td>@job.CreatedAt
+                    </td>
+                    <td>@job.Email
+                    </td>
+                    @if (job.Status.Equals("Complete"))
+                    {
+                        if (job.Type.Equals("Parse"))
+                        {
+                        <td>@Html.ActionLink((string)job.Description, "Index", "Optimization", new { inputId = job.InputId }, null)
+                        </td>
+                        }
+                        else if (job.Type.Equals("Optimization"))
+                        {
+                        <td>@Html.ActionLink((string)job.Description, "Index", "Optimization", new { resultId = job.InputId }, null)
+                        </td>
+                        }
+                        else 
+                        { 
+                        <td>Complete
+                        </td>
+                        }
+                    }
+                    else
+                    {
+                        <td>@job.Description
+                        </td>
+                    }
+                    <td>@job.Type
+                    </td>
+                    <td>@job.Status
+                    </td>
+                    <td>@job.RunTimeMinutes
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@Html.Partial("_modelPagination")

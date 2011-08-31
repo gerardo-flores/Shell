@@ -1,0 +1,20 @@
+﻿<div class="mroiPagination">
+@if (Model.TotalPages > 1)
+{
+    for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        if (i != Model.CurrentPage)
+        {
+        <span>
+            @Html.ActionLink(i.ToString(), "Index", new { pageNum = i })
+        </span>        
+        }
+        else
+        {
+        <span class="sel">
+            @i
+        </span>
+        }
+    }
+}
+</div>

@@ -1,0 +1,30 @@
+﻿<div class="shellHeader">
+    <div class="shellNav">
+        <ul>
+            @if (Request.Url.PathAndQuery.Contains("/Queue"))
+            {
+                <li>@Html.ActionLink("Jobs", "Index", "Queue", null, new { @class = "shellSel" })</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Jobs", "Index", "Queue")</li>
+            }
+            <li class="shellSprite shellNavPipe"></li>
+                @if (Request.Url.PathAndQuery.Contains("/User"))
+                {
+                <li>@Html.ActionLink("Users", "Index", "User", null, new { @class = "shellSel" })</li>
+                }
+                else
+                {
+                <li>@Html.ActionLink("Users", "Index", "User")</li>
+                }
+                <li class="shellSprite shellNavPipe"></li>
+            <li>@Html.ActionLink("Logout", "LogOff", "Account")</li>
+            <li class="shellClear"></li>
+        </ul>
+    </div>
+    <div class="shellClear">
+    </div>
+</div>
+<div class="shellHorSprite shellContDivider">
+</div>

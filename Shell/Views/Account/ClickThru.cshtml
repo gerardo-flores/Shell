@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "ClickThru";
+}
+<div class="termsAndConditions">
+    <h2>
+        TERMS OF USE
+    </h2>
+    <br />
+    @using (Html.BeginForm("ClickThru", "Account"))
+    {
+        <p>
+            McKinsey & Company, Inc. (“McKinsey”) is providing you and your company (the “Client”) with access to this proprietary software tool and related data and know-how (the “Tool”), subject to these terms (the “Terms”).
+        </p>
+        <br />
+        <p>
+            1. Grant of License. McKinsey hereby grants Client a non exclusive, non transferable, royalty-free, perpetual license to use the Tool solely for internal purposes. Client agrees that it shall not disclose any elements of the Tool in whole or in part without McKinsey’s prior written consent. Client acknowledges and agrees that McKinsey owns all rights, title, and interests, including, without limitation, intellectual property rights, in the Tool. All rights not expressly granted are reserved.
+        </p>
+        <br />
+        <p>
+            2. Client Data. McKinsey shall not disclose any client data to any third party unless it is (i) or becomes publicly available other than as a result of a breach hereof by McKinsey, (ii) already known to McKinsey, (iii) independently acquired or developed by McKinsey, (iv) blinded, aggregated, or disguised such that no third party could reasonably determine the client that is the source or subject of the information, or (v) required to be disclosed by law or judicial process.
+        </p>
+        <br />
+        <p>
+            3. Publicity. Except as otherwise agreed in advance in writing, neither party will refer to the other party or attribute any information to the other party in any external communication, including but not limited to communications to the press or for advertising or promotional purposes.
+        </p>
+        <br />
+        <p>
+            4. Disclaimers. THE TOOL IS BEING DELIVERED TO CLIENT AS IS, WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, SATISFACTORY QUALITY, OR FITNESS FOR A PARTICULAR PURPOSE. McKinsey does not warrant any results obtained or conclusions drawn from the use of the Tool. McKinsey shall not be obligated to maintain, update, or correct the Tool, and McKinsey shall not be liable to Client for any damages or losses caused by the use of the Tool, including but not limited to lost profits or consequential damages, even if McKinsey has been notified by Client of the possibility of such damages.
+        </p>
+        <br />
+        <p>
+            5. General Clauses. The validity and construction of this Agreement shall be governed by the laws of New York, excluding the conflicts-of-laws prin¬ciples thereof. This Agreement states the entire agree¬ment and understanding of the parties on the subject matter of this Agreement and supersedes all previous ag¬reements, arrangements, communications, and understan¬dings relat¬ing to that subject mat¬ter. This Agreement may be amended, modi¬fied, superseded, or cancelled, and any of the terms thereof may be waived, only by a written document signed by each party to this Agreement or, in the case of waiver, by the party or parties waiving compliance. Client may not assign or transfer any right or obligation under this Agreement without the prior written consent of McKinsey. This Agreement may be executed in counterparts.
+        </p>
+        <br />
+        <p>
+            @Html.CheckBox("Accept") I accept these terms and conditions.
+        </p>
+        <br />
+        <input type="submit" value="Submit" class="btn" />
+    }
+</div>

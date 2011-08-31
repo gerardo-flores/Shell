@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Create New User";
+}
+<div class="shellLoginCont">
+    <h2>
+        Create New User
+    </h2>
+    <br />
+    <p class="createUsrIns">
+        Use the form below to create a new account. Users will be forced to change the password
+        on first login.
+    </p>
+    @using (Html.BeginForm())
+    {
+        <div class="error">
+            @ViewBag.Message
+        </div>
+        <br />
+        <label>
+            Email
+        </label>
+        @Html.TextBox("Email")
+        <br />
+        <label>
+            Password
+        </label>
+        @Html.Password("password");
+        <div class="shellCenterAlign">
+            <input type="submit" value="Create New User" class="btn" />
+        </div>
+    }
+</div>
